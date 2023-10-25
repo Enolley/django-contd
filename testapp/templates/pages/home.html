@@ -1,8 +1,14 @@
 {% extends 'layout.html' %}
 {% block body %}
+{% load  static %}
+
     <title>Home</title>
 
-    <p>This is the home page</p>
+    <p class="one">This is the home page</p>
+    <input type="text" class="form-control">
+    <button class="btn btn-success">Accept</button>
+
+    <img src="{% static 'images/php.jpeg' %}" alt="">
 
 {% endblock %}
 
