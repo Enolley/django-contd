@@ -1,11 +1,11 @@
 {% extends 'layout.html' %}
 {% block body %}
 {% load static %}
-
+    <title>View Data</title>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-9">
             <br>
             <hr>
             <br>
@@ -17,6 +17,8 @@
                   <th scope="col">Email</th>
                   <th scope="col">Phone</th>
                   <th class="scope">Image</th>
+                  <th class="scope">Edit</th>
+                  <th class="scope">Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -26,6 +28,12 @@
                       <td>Otto</td>
                       <td>@mdo</td>
                       <td>Image</td>
+                      <td>
+                          <a href="" class="btn btn-warning">Edit</a>
+                      </td>
+                      <td>
+                          <a href="" class="btn btn-danger">Delete</a>
+                      </td>
                     </tr>
               </tbody>
             </table>
