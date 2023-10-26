@@ -1,9 +1,33 @@
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 .one
 {
     color: blue;
 }
 
-.activated
+footer
 {
-    color: red;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 6px;
+      background-color: forestgreen;
+      color: white;
+      text-align: center;
 }
+
+footer a
+{
+    color: #ffffff;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+
+

@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% load static %}
+
+    <title>Add Data</title>
+
+    {# name, email, phone, image #}
+<div class="container">
+    <hr>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="" method="post" enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+              <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Name" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Email" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input type="number" name="phone" class="form-control" placeholder="Phone" required>
+              </div>
+                <div class="mb-3">
+                <label class="form-label">Image</label>
+                <input type="file" accept="image/png, image/gif, image/jpeg" name="image" class="form-control" required>
+              </div>
+
+                <input type="submit" class="form-control btn btn-success">
+
+            </form>
+        </div>
+    </div>
+
+    <br><br>
+    <hr>
+</div>
+
+{% endblock %}
