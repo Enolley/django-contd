@@ -13,6 +13,11 @@ class Students(models.Model):
     phone = models.IntegerField()
     image = models.ImageField(upload_to="uploads/images", default="uploads/images/profile.png")
 
+
+def __str__(self):
+    return self.name
+
+
 # any minute you modify the models file, you MUST make and run migrations
 
 # python manage.py makemigrations: make migrations: create table(model) in the database

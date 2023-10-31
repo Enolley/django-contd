@@ -8,6 +8,8 @@
             <div class="col-md-9">
             <h2>Students</h2>
             <hr>
+            <h3>Tabular Format</h3>
+            <hr>
             <br>
             <table class="table table-hover">
               <thead>
@@ -22,12 +24,13 @@
                 </tr>
               </thead>
               <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>Image</td>
+              {% for student in data %}
+                  <tr>
+                      <th scope="row">{{ student.id }}</th>
+                      <td>{{ student.name }}</td>
+                      <td>{{ student.email }}</td>
+                      <td>{{ student.phone }}</td>
+                      <td><img src="media/{{ student.image }}" alt="{{ student.name }}" width="100"></td>
                       <td>
                           <a href="" class="btn btn-warning">Edit</a>
                       </td>
@@ -35,14 +38,44 @@
                           <a href="" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
+
+              {% endfor %}
+
               </tbody>
             </table>
             <br>
             <hr>
             <br>
-
-            </div>
+            <br>
+            <br>
         </div>
+           <br>
+            <hr>
+            <br>
+            <h2>Grid Display</h2>
+            <hr>
+            <br>
+
+            <div class="row" style="width: 100%">
+                {% for student in data %}
+                    <div class="col-md-3 m-2">
+                        <div class="card">
+                          <img src="media/{{ student.image }}" class="card-img-top" alt="{{ student.name }}" style="width: 100%">
+                          <div class="card-body">
+                            <h5 class="card-title">{{ student.name }}</h5>
+                            <p class="card-text">{{ student.email }}</p>
+                            <a href="#" class="btn btn-primary">{{ student.phone}}</a>
+                          </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <br>
+            <hr>
+            <br>
+            <br>
+            </div>
     </div>
 
 {% endblock %}
+

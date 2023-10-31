@@ -10,6 +10,12 @@
     color: blue;
 }
 
+.active
+{
+    color: red !important;
+}
+
+
 footer
 {
       position: fixed;
