@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
 
-
 app_name = "testapp"
 urlpatterns = [
     path('', views.Test, name="Test"),
@@ -11,5 +10,6 @@ urlpatterns = [
     path('view', views.view, name="View"),
 
     path('delete/<id>', views.delete, name="Delete"),
-    path('insert', views.insert, name="Insert")
+    path('insert', views.insert, name="Insert"),
+    path('edit/<id>', views.edit, name="Edit")
 ]

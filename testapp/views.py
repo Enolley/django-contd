@@ -45,3 +45,24 @@ def insert(request):
         return redirect("/view")
     return redirect("/view")
 
+def edit(request, id):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        image = request.FILES['image']
+
+        student = Students.objects.get(id=id)
+
+        student.name = name
+        student.email = email
+        student.phone = phone
+        student.image = image
+
+        student.save()
+        return redirect("/view")
+
+    student = Students.objects.get(id=id)
+    return render(request, 'edit.html', {'student':student})
+
+

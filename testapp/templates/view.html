@@ -32,7 +32,7 @@
                       <td>{{ student.phone }}</td>
                       <td><img src="media/{{ student.image }}" alt="{{ student.name }}" width="100"></td>
                       <td>
-                          <a href="" class="btn btn-warning">Edit</a>
+                          <a href="/edit/{{ student.id }}" class="btn btn-warning">Edit</a>
                       </td>
                       <td>
                           <!-- Implement a modal -->
@@ -51,8 +51,8 @@
                                     <p>Are you sure you'd like to delete this entry?</p>
                                   </div>
                                   <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <a href="/delete/{{ student.id }}" class="btn btn-primary">Yes</a>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                    <a href="/delete/{{ student.id }}" class="btn btn-success">Yes</a>
                                   </div>
                                 </div>
                               </div>

@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% load static %}
+
+    <title>Edit Data</title>
+
+    {# name, email, phone, image #}
+<div class="container">
+    <h2>Edit {{ student.name }}'s Data</h2>
+    <hr>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="" method="POST" enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+              <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Name" value="{{ student.name }}" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Email" value="{{ student.email }}" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input type="number" name="phone" class="form-control" placeholder="Phone" value="{{ student.phone }}" required>
+              </div>
+                <div class="mb-3">
+                <label class="form-label">Image</label><br>
+                    <img src="/media/{{ student.image }}" alt="{{ student.name }}" width="200"><br>
+                <input type="file" accept="image/png, image/gif, image/jpeg" name="image" class="form-control" required>
+              </div>
+
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Submit</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Are you sure you want to edit?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-success">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <br><br>
+    <hr>
+</div>
+
+{% endblock %}
