@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib import messages
 
-from .models import Students
+from .models import Students, Slider
 
 
 def Test(request):
@@ -29,6 +30,7 @@ def view(request):
 def delete(request, id):
     student = Students.objects.get(id=id)
     student.delete()
+    messages.warning(request, 'Entry was successfully deleted')
 
     return redirect("/view")
 
@@ -42,6 +44,7 @@ def insert(request):
             image = request.FILES['image']
         query = Students(name=name, email=email, phone=phone, image=image)
         query.save()
+        messages.success(request, 'Data added successfully!')
         return redirect("/view")
     return redirect("/view")
 
@@ -60,9 +63,14 @@ def edit(request, id):
         student.image = image
 
         student.save()
+        messages.success(request, 'Data updated successfully!')
         return redirect("/view")
 
     student = Students.objects.get(id=id)
     return render(request, 'edit.html', {'student':student})
+
+def sliders(request):
+    slides = Slider.objects.all()
+    return render(request, 'sliders.html', {'navbar' : 'slider', 'slides': slides}, )
 
 

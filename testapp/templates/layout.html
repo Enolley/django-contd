@@ -39,6 +39,9 @@
             <li class="nav-item">
               <a class="nav-link  {% if navbar == 'view' %} active {% endif %}" aria-current="page" href="{% url 'testapp:View' %}">View Data</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link  {% if navbar == 'sliders' %} active {% endif %}" aria-current="page" href="{% url 'testapp:Sliders' %}">Sliders</a>
+            </li>
           </ul>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

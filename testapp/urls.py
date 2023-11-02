@@ -8,8 +8,9 @@ urlpatterns = [
     path('about', views.about, name="About"),
     path('add', views.add, name="Add"),
     path('view', views.view, name="View"),
+    path('sliders', views.sliders, name="Sliders"),
 
     path('delete/<id>', views.delete, name="Delete"),
     path('insert', views.insert, name="Insert"),
-    path('edit/<id>', views.edit, name="Edit")
+    path('edit/<id>', views.edit, name="Edit"),
 ]

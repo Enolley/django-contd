@@ -14,8 +14,16 @@ class Students(models.Model):
     image = models.ImageField(upload_to="uploads/images", default="uploads/images/profile.png")
 
 
-def __str__(self):
-    return self.name
+    def __str__(self):
+        return self.name
+
+class Slider(models.Model):
+    text = models.CharField(max_length=200, blank=False, null=False)
+    text1 = models.CharField(max_length=200, blank=False, null=False)
+    image = models.ImageField(upload_to="uploads/sliders", default="uploads/sliders/profile.png")
+
+    def __str__(self):
+        return self.text
 
 
 # any minute you modify the models file, you MUST make and run migrations
