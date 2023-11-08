@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
@@ -24,6 +24,10 @@ class Slider(models.Model):
 
     def __str__(self):
         return self.text
+
+class CustomUser(AbstractUser):
+    year = models.PositiveIntegerField(blank=True, null=True)
+
 
 
 # any minute you modify the models file, you MUST make and run migrations

@@ -42,9 +42,12 @@
             <li class="nav-item">
               <a class="nav-link  {% if navbar == 'sliders' %} active {% endif %}" aria-current="page" href="{% url 'testapp:Sliders' %}">Sliders</a>
             </li>
+          <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="{% url 'testapp:Logout' %}">Logout</a>
+            </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <form action="{% url 'testapp:Search' %}" class="d-flex" role="search" method="get">
+            <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>

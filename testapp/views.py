@@ -3,10 +3,18 @@ from django.http import HttpResponse
 from django.contrib import messages
 
 from .models import Students, Slider
+from django.core.paginator import Paginator
+
+from django.views.generic import CreateView
+from . models import CustomUser
+from .form import CustomUserChangeForm, CustomUserCreationForm
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
 
-def Test(request):
-    return render(request, 'pages/home.html', {'navbar': 'home'})
+
 
 
 def contact(request):
@@ -22,9 +30,15 @@ def add(request):
 
 
 def view(request):
-    # retrieve data
-    data = Students.objects.all()
+
+    paginate = Paginator(Students.objects.all().order_by('name'), 2)
+    page = request.GET.get('page')
+    data = paginate.get_page(page)
     return render(request, 'view.html', {'navbar': 'view', 'data': data})
+
+#def view(request):
+    #data = Students.objects.all()
+    #return render(request, 'view.html', {'navbar': 'view', 'data': data})
 
 
 def delete(request, id):
@@ -71,6 +85,32 @@ def edit(request, id):
 
 def sliders(request):
     slides = Slider.objects.all()
-    return render(request, 'sliders.html', {'navbar' : 'slider', 'slides': slides}, )
+    return render(request, 'sliders.html', {'navbar' : 'slider', 'slides': slides})
 
+def search(request):
+    if request.method == 'GET':
+        query = request.GET.get('query')
+        if query:
+            student = Students.objects.filter(name__icontains=query)
+            return render(request, 'search.html', {'data':student})
 
+        return render(request, 'search.html')
+
+#CLASS BASED VIEWS
+
+class SignUp(CreateView):
+    model = CustomUser
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('testapp:Login')
+    template_name = 'register.html'
+
+class UserLogin(LoginView):
+    template_name = 'login.html'
+
+@login_required
+def Test(request):
+    return render(request, 'pages/home.html', {'navbar': 'home'})
+
+def Logout(request):
+    logout(request)
+    return redirect('/login')
